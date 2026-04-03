@@ -47,7 +47,7 @@ gc_min: 0.3  # Only works if filter_by_gc is True.
 # dummy assigns a score of 1.0 to all gRNAs, essentially treats all guides as the same.
 # scorer: 'ucrispr' uses a faster implementation of zhang2019
 # ucrispr assigns an efficacy score between [0-100] to each guide.
-scorer: 'ucrispr'
+scorer: 'dummy'
 
 # Integer value, default: 0
 # Only used if scorer: 'ucrispr'
@@ -83,7 +83,7 @@ patterns_to_exclude: ['TTTT']
 # Significantly affects running time.
 # True reports gRNA with off-targets.
 # report_up_to_n_mismatches reports gRNA with fewer <= N mismatches after the seed region.
-output_offtargets: True
+output_offtargets: False
 report_up_to_n_mismatches: 1  # This may be [0-3]
 
 # The column in the input csv file with the name of the 
@@ -100,14 +100,14 @@ input_species_offtarget_column: 'ortho_file_name'
 # and reducing the total guides needed.
 # Works best when unscored guides are present as it does not consider scores.
 # Uses seed_region_is_n_upstream_of_pam and mismatches_allowed_after_seed_region
-preclustering: True
+preclustering: False
 
 # Boolean: True or False. Default: False
 # Affects running time performance.
 # Compresses the output gRNA set by clustering similar gRNAs.
 # Adds a new column called 'cluster' to output/EXPERIMENT_NAME/EXPERIMENT_NAME.csv
 # Uses seed_region_is_n_upstream_of_pam and mismatches_allowed_after_seed_region
-postclustering: True
+postclustering: False
 seed_region_is_n_upstream_of_pam: 12
 mismatches_allowed_after_seed_region: 1  # Integer value, default: 2
 
